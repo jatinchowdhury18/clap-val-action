@@ -50,15 +50,32 @@ jobs:
         uses: ./
         with:
           plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap
+        continue-on-error: true
 
       - name: Test 0.3.1
         uses: ./
         with:
           version: 0.3.1
           plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap
+        continue-on-error: true
 
       - name: Test 0.3.0
         uses: ./
         with:
           version: 0.3.0
           plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap
+        continue-on-error: true
+
+      - name: Test 0.3.2 (--only-failed)
+        uses: ./
+        with:
+          plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap
+          args: --only-failed
+        continue-on-error: true
+
+      - name: Test 0.3.2 (--test-filter)
+        uses: ./
+        with:
+          plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap
+          args: --only-failed --invert-filter --test-filter state-reproducibility-flush
+        continue-on-error: true

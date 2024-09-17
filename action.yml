@@ -8,6 +8,9 @@ inputs:
   plugin_path:
     description: 'Path to the CLAP plugin you want to validate'
     required: true
+  args:
+    description: 'Extra arguments to pass to the validator'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -42,5 +45,5 @@ runs:
       shell: bash
 
     - name: Run validation
-      run: ./clap-validator validate ${{ inputs.plugin_path }}
+      run: ./clap-validator validate ${{ inputs.plugin_path }} ${{ inputs.args }}
       shell: bash
