@@ -16,17 +16,18 @@ runs:
       shell: bash
 
     - name: Download clap-validator (linux)
-      if: runner.os == 'macos'
+      if: runner.os == 'linux'
       run: |
         curl -L https://github.com/free-audio/clap-validator/releases/download/0.3.2/clap-validator-0.3.2-macos-universal.tar.gz -o clap-validator.tar.gz
-        tar -xvzf clap-calidator.tar.gz
+        tar -xvzf clap-validator.tar.gz
       shell: bash
 
     - name: Download clap-validator (macos)
       if: runner.os == 'macos'
       run: |
         curl -L https://github.com/free-audio/clap-validator/releases/download/0.3.2/clap-validator-0.3.2-macos-universal.tar.gz -o clap-validator.tar.gz
-        tar -xvzf clap-calidator.tar.gz
+        tar -xvzf clap-validator.tar.gz
+        mv binaries/clap-validator clap-validator
       shell: bash
 
     - name: Download clap-validator (windows)
@@ -37,5 +38,5 @@ runs:
       shell: bash
 
     - name: Check Version
-      run: ./binaries/clap-validator --version
+      run: ./clap-validator --version
       shell: bash
