@@ -18,22 +18,33 @@ jobs:
       - name: Get latest CMake
         uses: lukka/get-cmake@latest
 
+      - name: Install Ninja
+        if: runner.os == 'Windows'
+        uses: seanmiddleditch/gha-setup-ninja@master
+  
+      - name: Add msbuild to PATH
+        if: runner.os == 'Windows'
+        uses: microsoft/setup-msbuild@v2
+  
+      - name: Setup MSVC devcmd
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Checkout clap99
+      - name: Checkout clap-plugins
         uses: actions/checkout@v4
         with:
-          repository: baconpaul/clap-c99-distortion
-          path: clap99
+          repository: free-audio/clap-plugins
+          path: clap-plugins
           submodules: true
     
-      # - name: Build clap99
-      #   if: runner.os != 'linux' # @TODO
-      #   run: |
-      #     cd clap99
-      #     cmake -Bbuild
-      #     cmake --build build --parallel
+      - name: Build clap-plugins
+        run: |
+          cd clap-plugins
+          cmake --preset ninja-headless
+          cmake --build --preset ninja-headless --target clap-plugins --parallel
 
       - name: Test
         uses: ./

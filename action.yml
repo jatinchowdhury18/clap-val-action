@@ -18,7 +18,7 @@ runs:
     - name: Download clap-validator (linux)
       if: runner.os == 'linux'
       run: |
-        curl -L https://github.com/free-audio/clap-validator/releases/download/0.3.2/clap-validator-0.3.2-macos-universal.tar.gz -o clap-validator.tar.gz
+        curl -L https://github.com/free-audio/clap-validator/releases/download/0.3.2/clap-validator-0.3.2-ubuntu-18.04.tar.gz -o clap-validator.tar.gz
         tar -xvzf clap-validator.tar.gz
       shell: bash
 
