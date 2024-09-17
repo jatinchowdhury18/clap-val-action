@@ -5,7 +5,7 @@ A GitHub Action to download and run [`clap-validator`](https://github.com/free-a
 ### Suggested Usage
 
 ```yml
-- uses: jatinchowdhury18/clap-val-action
+- uses: jatinchowdhury18/clap-val-action@main
   with:
     plugin_path: ./path/to/plugin.clap # <-- Path to the plugin (required)
     version: 0.3.2                     # <-- Version of clap-validator (optional, defaults to 0.3.2)
