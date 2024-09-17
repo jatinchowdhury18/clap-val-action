@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  run:
+    name: check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-2022, macos-14]
+    steps:
+      - name: Get latest CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout clap99
+        uses: actions/checkout@v4
+        with:
+          repository: baconpaul/clap-c99-distortion
+          path: clap99
+          submodules: true
+    
+      - name: Build clap99
+        run: |
+          cd clap99
+          cmake -Bbuild
+          cmake --build build --parallel
+
+      - name: Test
+        uses: ./

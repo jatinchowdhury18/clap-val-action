@@ -1,0 +1,15 @@
+name: 'Run CLAP Validator'
+description: 'Runs clap-validator on a plugin'
+# inputs:
+#   version:
+#     description: 'CMake version in the form of 3.24.3 or 3.25.0-rc4 for release candidates'
+#     required: false
+#   release-candidate:
+#     description: 'Consider a release candidate when selecting the latest version'
+#     required: false
+#     default: false
+runs:
+  using: "composite"
+  steps:
+    - name: TEST
+      run: echo "HELLO"
