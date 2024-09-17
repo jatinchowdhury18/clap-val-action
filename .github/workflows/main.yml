@@ -48,13 +48,17 @@ jobs:
 
       - name: Test 0.3.2
         uses: ./
+        with:
+          plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap
 
       - name: Test 0.3.1
         uses: ./
         with:
           version: 0.3.1
+          plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap
 
       - name: Test 0.3.0
         uses: ./
         with:
           version: 0.3.0
+          plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap

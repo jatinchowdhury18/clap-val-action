@@ -5,10 +5,9 @@ inputs:
     description: 'clap-validator version (e.g. 0.3.2)'
     required: false
     default: 0.3.2
-#   release-candidate:
-#     description: 'Consider a release candidate when selecting the latest version'
-#     required: false
-#     default: false
+  plugin_path:
+    description: 'Path to the CLAP plugin you want to validate'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -40,4 +39,8 @@ runs:
 
     - name: Check Version
       run: ./clap-validator --version
+      shell: bash
+
+    - name: Run validation
+      run: ./clap-validator validate ${{ inputs.plugin_path }}
       shell: bash
