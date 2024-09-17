@@ -70,11 +70,11 @@ jobs:
         uses: ./
         with:
           plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap
-          args: --plugin_id com.github.free-audio.clap.gain --only-failed
+          args: --plugin-id com.github.free-audio.clap.gain --only-failed
         continue-on-error: true
 
       - name: Test 0.3.2 (--test-filter)
         uses: ./
         with:
           plugin_path: clap-plugins/builds/ninja-headless/plugins/Debug/clap-plugins.clap
-          args: --plugin_id com.github.free-audio.clap.gain --invert-filter --test-filter state-reproducibility-flush
+          args: --plugin-id com.github.free-audio.clap.gain --invert-filter --test-filter state-reproducibility-flush
