@@ -28,12 +28,12 @@ jobs:
           path: clap99
           submodules: true
     
-      - name: Build clap99
-        if: runner.os != 'linux' # @TODO
-        run: |
-          cd clap99
-          cmake -Bbuild
-          cmake --build build --parallel
+      # - name: Build clap99
+      #   if: runner.os != 'linux' # @TODO
+      #   run: |
+      #     cd clap99
+      #     cmake -Bbuild
+      #     cmake --build build --parallel
 
       - name: Test
         uses: ./
