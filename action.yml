@@ -1,9 +1,10 @@
 name: 'Run CLAP Validator'
 description: 'Runs clap-validator on a plugin'
-# inputs:
-#   version:
-#     description: 'CMake version in the form of 3.24.3 or 3.25.0-rc4 for release candidates'
-#     required: false
+inputs:
+  version:
+    description: 'clap-validator version (e.g. 0.3.2)'
+    required: false
+    default: 0.3.2
 #   release-candidate:
 #     description: 'Consider a release candidate when selecting the latest version'
 #     required: false
@@ -18,14 +19,14 @@ runs:
     - name: Download clap-validator (linux)
       if: runner.os == 'linux'
       run: |
-        curl -L https://github.com/free-audio/clap-validator/releases/download/0.3.2/clap-validator-0.3.2-ubuntu-18.04.tar.gz -o clap-validator.tar.gz
+        curl -L https://github.com/free-audio/clap-validator/releases/download/${{ inputs.version }}/clap-validator-${{ inputs.version }}-ubuntu-18.04.tar.gz -o clap-validator.tar.gz
         tar -xvzf clap-validator.tar.gz
       shell: bash
 
     - name: Download clap-validator (macos)
       if: runner.os == 'macos'
       run: |
-        curl -L https://github.com/free-audio/clap-validator/releases/download/0.3.2/clap-validator-0.3.2-macos-universal.tar.gz -o clap-validator.tar.gz
+        curl -L https://github.com/free-audio/clap-validator/releases/download/${{ inputs.version }}/clap-validator-${{ inputs.version }}-macos-universal.tar.gz -o clap-validator.tar.gz
         tar -xvzf clap-validator.tar.gz
         mv binaries/clap-validator clap-validator
       shell: bash
@@ -33,7 +34,7 @@ runs:
     - name: Download clap-validator (windows)
       if: runner.os == 'windows'
       run: |
-        powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest https://github.com/free-audio/clap-validator/releases/download/0.3.2/clap-validator-0.3.2-windows.zip -OutFile clap-validator.zip"
+        powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest https://github.com/free-audio/clap-validator/releases/download/${{ inputs.version }}/clap-validator-${{ inputs.version }}-windows.zip -OutFile clap-validator.zip"
         powershell -Command "Expand-Archive clap-validator.zip -DestinationPath ."
       shell: bash
 

@@ -46,5 +46,15 @@ jobs:
           cmake --preset ninja-headless
           cmake --build --preset ninja-headless --target clap-plugins --parallel
 
-      - name: Test
+      - name: Test 0.3.2
         uses: ./
+
+      - name: Test 0.3.1
+        uses: ./
+        with:
+          version: 0.3.1
+
+      - name: Test 0.3.0
+        uses: ./
+        with:
+          version: 0.3.0
