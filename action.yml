@@ -14,10 +14,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: TEST
-      run: echo "HELLO"
-      shell: bash
-
     - name: Download clap-validator (linux)
       if: runner.os == 'linux'
       run: |
@@ -40,7 +36,7 @@ runs:
         powershell -Command "Expand-Archive clap-validator.zip -DestinationPath ."
       shell: bash
 
-    - name: Check Version
+    - name: Check version
       run: ./clap-validator --version
       shell: bash
 
