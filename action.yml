@@ -41,5 +41,5 @@ runs:
       shell: bash
 
     - name: Run validation
-      run: ./clap-validator validate ${{ inputs.args }} "${{ inputs.plugin_path }}"
+      run: ./clap-validator validate ${{ inputs.args }} ${{ inputs.plugin_path }}
       shell: bash
